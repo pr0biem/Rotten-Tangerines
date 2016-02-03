@@ -9,6 +9,11 @@
       </ul>
     </div>
   <% end %>
+  
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+  </div>
   <div>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -26,16 +31,8 @@
     <%= f.number_field :runtime_in_minutes %>
   </div>
   <div>
-    <%= f.label :poster_image_url %><br>
-    <%= f.text_field :poster_image_url %>
-  </div>
-  <div>
     <%= f.label :description %><br>
     <%= f.text_area :description %>
-  </div>
-    <div class="field">
-    <%= f.label :image %><br>
-    <%= f.file_field :image %>
   </div>
   <div class="actions">
     <%= f.submit %>
