@@ -18,8 +18,6 @@ class Review < ActiveRecord::Base
   validates :rating_out_of_ten,
      numericality: { less_than_or_equal_to: 10 }
 
-  end
-
   validates :user,
     presence: true
 end
