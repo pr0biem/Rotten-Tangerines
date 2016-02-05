@@ -2,6 +2,15 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
+    @movies = Movie.where('title LIKE ? OR director LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%")
+    case params[:runtime_in_minutes]
+    when "short"
+      @movie = @movies.where('runtime_in_minutes < 90')
+    when "medium"
+      @movie = @movies.where('runtime_in_minutes >= 90 AND runtime_in_minutes < 120')
+    when "long"
+      @movie = @movies.where('runtime_in_minutes >= 120')
+    end
   end
 
   def show
@@ -34,6 +43,13 @@ class MoviesController < ApplicationController
     else
       render :edit
     end
+  end
+
+
+  def destroy
+    @movie = Movie.find(params[:id])
+    @movie.destroy
+    redirect_to movies_path
   end
 
 

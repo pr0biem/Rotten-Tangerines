@@ -25,6 +25,15 @@ class Movie < ActiveRecord::Base
     reviews.sum(:rating_out_of_ten)/reviews.size
   end
 
+  def self.search(info)
+    @movies = all
+    where('title LIKE ? OR director LIKE ? ', "%#{info}%", "%#{info}%")
+  end
+
+  # def self.runtime(time)
+
+  # end
+
   protected
 
   def release_date_is_in_the_past
