@@ -1,15 +1,10 @@
 class MoviesController < ApplicationController
 
   def index
-    @movies = Movie.all
-    @movies = Movie.search(params[:search]).order("created_at DESC")
-    case params[:runtime_in_minutes]
-    when "short"
-      @movies = @movies.where('runtime_in_minutes < 90') 
-    when "medium"
-      @movies = @movies.where('runtime_in_minutes >= 90 and runtime_in_minutes < 120')
-    when "long"
-      @movies = @movies.where('runtime_in_minutes >= 120')
+    if params[:search]
+      @movies = Movie.search_keyword(params[:search]).runtime_length(params[:runtime_in_minutes])
+    else
+      @movies = Movie.all
     end
   end
 

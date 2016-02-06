@@ -21,18 +21,28 @@ class Movie < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
+  scope :search_keyword, -> (info) { where('title LIKE ? OR director LIKE ? ', "%#{info}%", "%#{info}%") }
+
   def review_average
     reviews.sum(:rating_out_of_ten)/reviews.size
   end
 
-  def self.search(info)
-    @movies = all
-    where('title LIKE ? OR director LIKE ? ', "%#{info}%", "%#{info}%")
-  end
-
-  # def self.runtime(time)
-
+  # def self.search(info)
+  #   @movies = all
+  #   where('title LIKE ? OR director LIKE ? ', "%#{info}%", "%#{info}%")
   # end
+  
+
+   def self.runtime_length(range)
+      case range
+      when "short"
+        where('runtime_in_minutes < 90') 
+      when "medium"
+        where('runtime_in_minutes >= 90 and runtime_in_minutes < 120')
+      when "long"
+        where('runtime_in_minutes >= 120')
+      end
+    end
 
   protected
 
