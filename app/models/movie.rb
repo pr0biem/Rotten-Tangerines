@@ -35,6 +35,8 @@ class Movie < ActiveRecord::Base
 
    def self.runtime_length(range)
       case range
+      when ""
+        where('runtime_in_minutes')
       when "short"
         where('runtime_in_minutes < 90') 
       when "medium"

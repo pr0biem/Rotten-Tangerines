@@ -5,7 +5,7 @@
 
 <%= form_tag(movies_path, method: :get) do %>
 <%= text_field_tag :search, params[:search], placeholder: "Search title or director" %>
-<%= select_tag :runtime_in_minutes, options_for_select([ 
+<%= select_tag 'runtime_in_minutes', options_for_select([ 
   ["", ""],
   ["Under 90 minutes", 'short'],
   ["Between 90 and 120 minutes", 'medium'],
@@ -17,11 +17,4 @@
 <% end %>
 <hr>
 
-<% @movies.each do |movie| %>
-  <%= link_to image_tag(movie.image_url(:thumb)), movie_path(movie) %>
-  <h2><%= link_to movie.title, movie_path(movie) %></h2>
-  <h3><%= formatted_date(movie.release_date) %></h3>
-  <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-  <p><%= movie.description %></p>
-  <hr>
-<% end %>
+<%= render 'movie' %>
