@@ -1,0 +1,67 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bulma";
+
+a {
+  color: #343434;
+}
+
+a:hover {
+  color: #141414;
+}
+
+nav.navbar {
+  background-color: #22E8C7;
+  
+  .navbar-item {
+    margin: 4px 100px 4px 100px;
+  }
+
+}
+
+input#search {
+  height: 22.667px;
+}
+
+select {
+  -webkit-appearance: none;
+  border-radius: 0%;
+  border-width: 0.6px;
+  border-color: #C1C1C1;
+  display: inline-block;
+  height: 22.667px;
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+  position: relative;
+  vertical-align: top;
+}
+
+#submit button {
+  -webkit-appearance: none;
+  border-radius: 0px;
+  height: 22.667px;
+}
+
+div.column.is-3 > img {
+  min-width: 142px;
+  max-width: 142px;
+  min-height: 220px;
+  max-height: 220px;
+}
+
+p.movie-description {
+  text-align: justify;
+}

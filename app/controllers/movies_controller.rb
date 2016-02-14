@@ -9,7 +9,11 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.find(params[:id])
+    unless Movie.exists?(params[:id])
+      redirect_to movies_path
+    else
+      @movie = Movie.find(params[:id])
+    end
   end
 
   def new

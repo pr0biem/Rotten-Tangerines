@@ -3,18 +3,4 @@
 
 <hr>
 
-<%= form_tag(movies_path, method: :get) do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search title or director" %>
-<%= select_tag 'runtime_in_minutes', options_for_select([ 
-  ["", ""],
-  ["Under 90 minutes", 'short'],
-  ["Between 90 and 120 minutes", 'medium'],
-  ["120 minutes or longer", 'long']
-
-  ])
-%>
-<%= submit_tag "Search" %>
-<% end %>
-<hr>
-
 <%= render 'movie' %>

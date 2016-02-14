@@ -1,0 +1,39 @@
+<nav class='navbar'>
+  <div class='navbar-left'>
+    <div class="navbar-item">
+      <p class="subtitle is-4">
+        <%= link_to "Home", root_path %>
+        <div>
+          <%= form_tag(movies_path, method: :get) do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search title or director" %>
+          <%= select_tag 'runtime_in_minutes', options_for_select([ 
+            ["Select a duration", ""],
+            ["Under 90 minutes", 'short'],
+            ["Between 90 and 120 minutes", 'medium'],
+            ["120 minutes or longer", 'long']
+            ])
+          %>
+          <%= submit_tag "Search", class: 'button', id: 'search' %>
+          <% end %>
+        </div>
+      </p>
+    </div>
+  </div>
+  <div class='navbar-right'>
+    <div class="navbar-item">
+      <p class="subtitle is-4">
+        <% if current_user %>
+          <%= current_user.full_name %> 
+          <div class='nav-right-links is-right'>      
+          <%= link_to "Admin Panel", admin_dashboard_index_path %> |
+          <%= link_to "Log out", session_path("current"), method: :delete %>
+          </div>
+        <% else %>
+          <br/>
+          <%= link_to "Log In", new_session_path %> | <%= link_to "Sign Up", new_user_path %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+  </div>
+</nav>
