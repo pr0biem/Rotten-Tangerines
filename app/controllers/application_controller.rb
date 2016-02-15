@@ -18,12 +18,11 @@ class ApplicationController < ActionController::Base
   end
 
   def restrict_admin_access
-    if !current_user && !current_user.admin?
+    if !current_user.admin?
       flash[:alert] = 'You are not an admin!'
       redirect_to new_session_path
     end
   end
 
   helper_method :current_user
-
 end

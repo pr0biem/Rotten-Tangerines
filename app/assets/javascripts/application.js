@@ -14,3 +14,17 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(function() {
+  // reload page on home click //
+  $('a.home-link').on('click', function() {
+    window.location.href = 'http://localhost:3000/';
+  });
+  // hover to show description //
+  $('div.column.is-3').hover(function(){
+    $(this).find('.movie__description').show()
+  },
+  function(){
+    $(this).find('.movie__description').hide();
+  });
+});

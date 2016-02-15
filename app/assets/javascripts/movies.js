@@ -1,9 +1,8 @@
 $(function() {
-  $('.movie-description').hide()
   $('div.column.is-3').hover(function(){
-    $(this).find('.movie-description').show()
+    $(this).find('.movie__description').show()
   },
   function(){
-    $(this).find('.movie-description').hide();
+    $(this).find('.movie__description').hide();
   });
 });

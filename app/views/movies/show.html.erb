@@ -1,13 +1,15 @@
-<%= link_to "Back to all movies", movies_path %><br/>
 
-<%= link_to image_tag(@movie.image_url(:thumb).to_s), movie_path(@movie) %>
-
-
-<h2><%= @movie.title %> (<%= link_to "edit", edit_movie_path(@movie) %>, <%= link_to "delete", movie_path(@movie), method: :delete, confirm: "You sure?" %>)</h2>
-<h3><%= formatted_date(@movie.release_date) %></h3>
-<h4>Dir. <%= @movie.director %> | <%= @movie.runtime_in_minutes %> minutes</h4>
-<p><%= @movie.description %></p>
-
+<div class='columns'>
+  <div class='column is-2'>
+    <%= image_tag(@movie.image_url.to_s) %>
+  </div>
+  <div class='column is-10'>
+  <h1 class='movie__title'><%= @movie.title %></h1>
+    <h3><%= formatted_date(@movie.release_date) %></h3>
+    <h4>Dir. <%= @movie.director %> | <%= @movie.runtime_in_minutes %> minutes</h4>
+    <p><%= @movie.description %></p>
+  </div>
+</div>
 <% @movie.reviews.each do |review| %>
   <p><%= review.text %></p>
   <p><%= review.rating_out_of_ten %>/10</p>
@@ -15,6 +17,11 @@
 <% end %>
 
 <h3>Reviews of <em><%= @movie.title %></em></h3>
+<br/>
+<% if @movie.reviews.count == 0 %>
+  <p>No reviews yet. Perhaps you would like to start it all off?</p>
+<% end %>
+<br/>
 <% if current_user %>
   <% @movie.reviews.each do |review| %>
     <p><%= review.text %></p>
@@ -24,4 +31,7 @@
   <p><%= link_to "Write a review!", new_movie_review_path(@movie) %></p>
 <% else %>
   <p>Please <%= link_to "log in", new_session_path %> to see reviews and add your own.</p> 
+<% end %>
+<% if current_user && current_user.admin? %>
+<%= link_to "edit", edit_movie_path(@movie) %>, <%= link_to "delete", movie_path(@movie), method: :delete, confirm: "You sure?" %>
 <% end %>

@@ -15,6 +15,14 @@
  */
 @import "bulma";
 
+$seafoam: #8BFFCE;
+$seafoam-90: #96FFD2;
+$seafoam-75: #A6FFD9;
+$seafoam-50: #C2FFE6;
+$seafoam-25: #E0FFF2;
+$seafoam-10: #F2FFFA;
+$seafoam-5: #F9FFFC;
+
 a {
   color: #343434;
 }
@@ -23,17 +31,22 @@ a:hover {
   color: #141414;
 }
 
+h1.movie__title {
+  font-size: 2.25em;
+}
+
 nav.navbar {
-  background-color: #22E8C7;
+  background-color: $seafoam-75;
   
   .navbar-item {
     margin: 4px 100px 4px 100px;
   }
 
-}
-
-input#search {
+  input#search {
   height: 22.667px;
+  text-align: center;
+  }
+
 }
 
 select {
@@ -55,13 +68,7 @@ select {
   height: 22.667px;
 }
 
-div.column.is-3 > img {
-  min-width: 142px;
-  max-width: 142px;
-  min-height: 220px;
-  max-height: 220px;
-}
+html {
+  background-color: $seafoam-10;
 
-p.movie-description {
-  text-align: justify;
 }

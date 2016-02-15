@@ -1,3 +1,38 @@
 // Place all the styles related to the movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$seafoam: #8BFFCE;
+$seafoam-90: #96FFD2;
+$seafoam-75: #A6FFD9;
+$seafoam-50: #C2FFE6;
+$seafoam-25: #E0FFF2;
+$seafoam-10: #F2FFFA;
+$seafoam-5: #F9FFFC;
+div.column.is-3 {
+  padding: 5px;
+  text-align: center;
+  
+  .column-seperator {
+    padding-top: 5px;
+    background-color: $seafoam-25;
+
+    .movie__info {
+    background-color: $seafoam-50;
+    text-align: center;
+
+    
+      img {
+        min-width: 142px;
+        max-width: 142px;
+        min-height: 220px;
+        max-height: 220px;
+      }
+    }
+  }
+  .movie__description {
+    display: none;
+    text-align: justify;
+    margin-top: 5px;
+    background-color: $seafoam-25;
+  }
+}

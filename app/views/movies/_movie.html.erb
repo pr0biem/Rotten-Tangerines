@@ -2,13 +2,18 @@
 <div class='columns is-multiline'>
   <% @movies.each do |movie| %>
     <div class='column is-3'>
-      <%= link_to image_tag(movie.image_url(:thumb)), movie_path(movie) %>
-      <h2><%= link_to movie.title, movie_path(movie) %></h2>
-      <h3><%= formatted_date(movie.release_date) %></h3>
-      <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-      <br/>
-      <p class='movie-description'><%= movie.description %></p>
-    </div>
+      <div class='column-seperator'>
+        <%= link_to image_tag(movie.image_url(:thumb)), movie_path(movie) %>
+        <div class='movie__info'>
+          <h2><%= link_to movie.title, movie_path(movie) %></h2>
+          <h3><%= formatted_date(movie.release_date) %></h3>
+          <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
+          </div>
+        </div>
+        <div class='movie__description'>
+          <p><%= movie.description %></p>
+        </div>
+      </div>
     <hr>
   <% end %>
 </div>
